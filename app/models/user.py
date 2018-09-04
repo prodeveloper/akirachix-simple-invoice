@@ -1,4 +1,4 @@
-from peewee import (Model, CharField, SqliteDatabase)
+from peewee import (Model, CharField, SqliteDatabase, IntegrityError)
 
 DATABASE = SqliteDatabase("invoice.db")
 
@@ -18,11 +18,11 @@ def initialize():
     DATABASE.create_tables([User], safe=True)
     try:
         User.create(
-            first_name="Jacob",
-            last_name="Chencha",
+            first_name="Felician",
+            last_name="Mueni",
             email="john@doe.com",
             company="Acme Corp."
         )
-    except ValueError:
+    except IntegrityError:
         pass
     DATABASE.close()
