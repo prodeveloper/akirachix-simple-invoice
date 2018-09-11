@@ -11,18 +11,3 @@ class User(Model):
 
     class Meta:
         database = DATABASE
-
-
-def initialize():
-    DATABASE.connect()
-    DATABASE.create_tables([User], safe=True)
-    try:
-        User.create(
-            first_name="Felician",
-            last_name="Mueni",
-            email="john@doe.com",
-            company="Acme Corp."
-        )
-    except IntegrityError:
-        pass
-    DATABASE.close()
