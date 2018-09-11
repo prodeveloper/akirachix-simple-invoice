@@ -17,7 +17,8 @@ def index():
     invoice = Invoice.select().where(
         Invoice.user_email == user.email
     ).get()
-    return render_template('invoice.html', user=user, invoice=invoice)
+    total = invoice.design_fee + invoice.hosting_fee + invoice.domain_fee
+    return render_template('invoice.html', user=user, invoice=invoice, total=total)
 
 
 if __name__ == '__main__':
